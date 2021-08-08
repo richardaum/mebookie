@@ -7,7 +7,7 @@ Me Bookie is a mobile/web software application which allows to make reservation 
 ## Run
 
 ```
-yarn start
+yarn wsrun start
 // It will open your browser with Expo Developer Tools.
 ```
 
