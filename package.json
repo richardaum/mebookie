@@ -1,0 +1,12 @@
+{
+  "name": "mebookie",
+  "description": "Me Bookie is a mobile/web software application which allows to make reservation in public places.",
+  "repository": "git@github.com:richardaum/mebookie.git",
+  "author": "richard.lopes <richard.lopes92@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "applications/*",
+    "packages/*"
+  ]
+}
