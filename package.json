@@ -10,6 +10,7 @@
     "packages/*"
   ],
   "dependencies": {
+    "expo-cli": "^4.10.0",
     "wsrun": "^5.2.4"
   }
 }
