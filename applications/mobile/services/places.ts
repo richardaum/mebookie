@@ -1,17 +1,17 @@
 import axios from "axios";
 import React from "react";
 
-export interface Place {
+export interface IPlace {
   id: string;
   name: string;
 }
 
 export const usePlaces = () => {
-  const [places, setPlaces] = React.useState<Place[]>([]);
+  const [places, setPlaces] = React.useState<IPlace[]>([]);
 
   React.useEffect(() => {
     axios
-      .post<{ data: { places: Place[] } }>("/graphql", {
+      .post<{ data: { places: IPlace[] } }>("/graphql", {
         query: `
           {
             places {

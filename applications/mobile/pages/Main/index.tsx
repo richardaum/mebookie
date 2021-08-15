@@ -1,29 +1,38 @@
+import { useNavigation } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
 import { StatusBar } from "expo-status-bar";
-import React from "react";
-import { FlatList, SafeAreaView, StyleSheet } from "react-native";
-import { Appbar, List } from "react-native-paper";
+import React, { useState } from "react";
+import { SafeAreaView, StyleSheet } from "react-native";
+import { Appbar } from "react-native-paper";
 import BrandIcon from "../../icons/BrandIcon";
-import { usePlaces } from "../../services/places";
+import { IPlace } from "../../services/places";
+import { Place } from "../Place";
+import { Places } from "../Places";
+
+export type Screens = {
+  Places: undefined;
+  Place: undefined;
+};
+
+const Stack = createStackNavigator<Screens>();
 
 export const Main = () => {
-  const { places } = usePlaces();
+  const [selectedPlace, setSelectedPlace] = useState<IPlace>();
+  const navigation = useNavigation();
 
   return (
     <>
-      <StatusBar animated style="light" />
+      <StatusBar style="light" />
 
-      <SafeAreaView>
-        <Appbar.Header style={styles.header}>
-          <BrandIcon style={styles.logo} height={32} width="100%" />
-        </Appbar.Header>
+      <Stack.Navigator screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="Places">
+          {() => <Places onSelectedPlace={setSelectedPlace} />}
+        </Stack.Screen>
 
-        <FlatList
-          data={places}
-          renderItem={(e) => (
-            <List.Item title={e.item.name} onPress={() => {}} />
-          )}
-        />
-      </SafeAreaView>
+        <Stack.Screen name="Place">
+          {() => <Place selectedPlace={selectedPlace} />}
+        </Stack.Screen>
+      </Stack.Navigator>
     </>
   );
 };
