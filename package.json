@@ -9,6 +9,9 @@
     "applications/*",
     "packages/*"
   ],
+  "scripts": {
+    "start": "wsrun start"
+  },
   "dependencies": {
     "wsrun": "^5.2.4"
   }
